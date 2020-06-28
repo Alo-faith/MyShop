@@ -26,7 +26,6 @@ const styles = {
     marginLeft: "2px",
   },
 };
-
 function App() {
   return (
     <div>
