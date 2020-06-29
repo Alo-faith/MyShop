@@ -1,18 +1,9 @@
 import React from "react";
-
-import items from "./items";
 import styles from "./styles";
+// Components
+import FabricList from "./components/FabricList";
 
 function App() {
-  const itemsList = items.map((item) => (
-    <div style={styles.list} key={items.id}>
-      <div style={styles.space}>
-        <img style={styles.pic} src={item.image} alt={item.name} />
-        <p> {item.name} </p>
-        <p> {item.price} KD / PER METRE </p>
-      </div>
-    </div>
-  ));
   return (
     <div>
       <div>
@@ -26,7 +17,7 @@ function App() {
         <br></br>
       </div>
 
-      <div styles={styles.list}>{itemsList}</div>
+      <FabricList />
     </div>
   );
 }
