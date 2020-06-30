@@ -1,17 +1,20 @@
 import React from "react";
-// styles
-import styles from "../styles";
+
 // Data
 import items from "../items";
-// Fabric Items
-import FabricItems from "./FabricItems";
 
-const FabricList = () => {
+// component
+import FabricItem from "./FabricItem";
+
+// style
+import { ListWrapper } from "../styles";
+
+const List = () => {
   const itemsList = items.map((item) => (
-    <FabricItems item={item} key={item.id} />
+    <FabricItem item={item} key={item.id} />
   ));
 
-  return <div style={styles.list}>{itemsList}</div>;
+  return <ListWrapper>{itemsList}</ListWrapper>;
 };
 
-export default FabricList;
+export default List;

@@ -9,7 +9,7 @@ const items = [
   {
     id: 2,
     name: "Organic Cotton",
-    price: 6,
+    price: 4,
     image:
       "https://www.textileexpressfabrics.co.uk/media/catalog/product/cache/ecd051e9670bd57df35c8f0b122d8aea/o/r/organic_cotton_2.jpg",
   },
