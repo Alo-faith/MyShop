@@ -1,17 +1,21 @@
 import React from "react";
 
 // style
-import { FWrapper } from "../styles";
+import { FWrapper, DeleteButtonStyled } from "../styles";
 
 const FabricItem = (props) => {
   const item = props.item;
-  // const { item } = props;
+
+  const handleDelete = () => {
+    props.deleteItem(item.id);
+  };
   return (
     <FWrapper>
       <img src={item.image} alt={item.name} />
       <p> {item.name} </p>
 
       <p className="item-price">{item.price} KD/ PER METRE</p>
+      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
     </FWrapper>
   );
 };

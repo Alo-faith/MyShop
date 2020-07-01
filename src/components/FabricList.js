@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Data
 import items from "../items";
@@ -10,8 +10,14 @@ import FabricItem from "./FabricItem";
 import { ListWrapper } from "../styles";
 
 const List = () => {
-  const itemsList = items.map((item) => (
-    <FabricItem item={item} key={item.id} />
+  const [_items, setItems] = useState(items);
+  const deleteItem = (itemId) => {
+    const updatedItem = _items.filter((item) => item.id !== +itemId);
+    setItems(updatedItem);
+  };
+
+  const itemsList = _items.map((item) => (
+    <FabricItem item={item} key={item.id} deleteItem={deleteItem} />
   ));
 
   return <ListWrapper>{itemsList}</ListWrapper>;

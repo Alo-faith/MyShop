@@ -51,6 +51,9 @@ const TheamButton = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   // cursor: pointer;
+  // &:active {
+  //   background-color: red;
+  // }
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -58,6 +61,9 @@ const GlobalStyle = createGlobalStyle`
     color:  ${(props) => props.theme.mainColor};
     background-color: ${(props) => props.theme.backgroundColor};
   }
+`;
+const DeleteButtonStyled = styled.p`
+  color: red;
 `;
 
 export {
@@ -68,4 +74,5 @@ export {
   ListWrapper,
   FWrapper,
   GlobalStyle,
+  DeleteButtonStyled,
 };
