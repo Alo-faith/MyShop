@@ -40,6 +40,18 @@ const FWrapper = styled.div`
     }
   }
 `;
+const TheamButton = styled.button`
+  background-color: #555;
+  // border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  // text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  // cursor: pointer;
+`;
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -48,4 +60,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export { Description, Title, ShopImage, ListWrapper, FWrapper, GlobalStyle };
+export {
+  TheamButton,
+  Description,
+  Title,
+  ShopImage,
+  ListWrapper,
+  FWrapper,
+  GlobalStyle,
+};
