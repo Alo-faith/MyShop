@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const Title = styled.h1`
   text-align: center;
-  color: #003049;
+  color: ${(props) => props.theme.head};
 `;
 
 const Description = styled.h2`
@@ -13,6 +13,7 @@ const ShopImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 400px;
 `;
 
 const ListWrapper = styled.div`
@@ -23,7 +24,6 @@ const ListWrapper = styled.div`
 
 const FWrapper = styled.div`
   margin: 20px;
-
   img {
     margin-left: 1px;
     width: 300px;
@@ -31,20 +31,19 @@ const FWrapper = styled.div`
     border: 2px solid #555;
     padding: 5px;
   }
-
   p {
     text-align: center;
-
     &.item-price {
       color: ${(props) => props.theme.blue};
     }
   }
 `;
 const TheamButton = styled.button`
-  background-color: #555;
+  background-color: ${(props) => props.theme.head};
   // border: none;
-  color: white;
+  color: ${(props) => props.theme.backgroundColor};
   padding: 15px 32px;
+  font-weight: bold;
   text-align: center;
   // text-decoration: none;
   display: inline-block;
