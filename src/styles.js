@@ -38,21 +38,18 @@ const FWrapper = styled.div`
     }
   }
 `;
+
+
+
 const TheamButton = styled.button`
   background-color: ${(props) => props.theme.head};
-  // border: none;
   color: ${(props) => props.theme.backgroundColor};
   padding: 15px 32px;
   font-weight: bold;
   text-align: center;
-  // text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  // cursor: pointer;
-  // &:active {
-  //   background-color: red;
-  // }
 `;
 
 const GlobalStyle = createGlobalStyle`

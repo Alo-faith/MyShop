@@ -46,9 +46,17 @@ function App() {
   let [currentTheme, setCurrentTheme] = useState("light");
 
   const toggleTheme = () => {
-    if (currentTheme === "light") setCurrentTheme("dark");
-    else if (currentTheme === "dark") setCurrentTheme("grey");
-    else setCurrentTheme("light");
+    // if (currentTheme === "light") setCurrentTheme("dark");
+    // else if (currentTheme === "dark") setCurrentTheme("grey");
+    // else setCurrentTheme("light");
+
+    setCurrentTheme(
+      currentTheme === "light"
+        ? "dark"
+        : currentTheme === "dark"
+        ? "grey"
+        : "light"
+    );
   };
 
   return (
