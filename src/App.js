@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import fabric from "./FabricLogo.png";
 
 //  style
+
+// Detailes
+import ItemDetails from "./components/ItemDetails";
+
 import {
   GlobalStyle,
   Description,
@@ -16,6 +20,9 @@ import FabricList from "./components/FabricList";
 
 // Them
 import { ThemeProvider } from "styled-components";
+
+import items from "./items";
+import List from "./components/FabricList";
 
 const theme = {
   light: {
@@ -43,13 +50,11 @@ const theme = {
 };
 
 function App() {
-  let [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState("light");
+  const [item, setItem] = useState(null);
+  const [_items, setItems] = useState(items);
 
   const toggleTheme = () => {
-    // if (currentTheme === "light") setCurrentTheme("dark");
-    // else if (currentTheme === "dark") setCurrentTheme("grey");
-    // else setCurrentTheme("light");
-
     setCurrentTheme(
       currentTheme === "light"
         ? "dark"
@@ -59,21 +64,38 @@ function App() {
     );
   };
 
+  const deleteItem = (itemId) => {
+    const updatedItem = _items.filter((item) => item.id !== +itemId);
+    setItems(updatedItem);
+    setItem(null);
+  };
+
+  const selectItem = (itemId) => {
+    const selectedItem = items.find((item) => item.id === itemId);
+    setItem(selectedItem);
+  };
+
+  const setView = () =>
+    item ? (
+      <ItemDetails item={item} deleteItem={deleteItem} />
+    ) : (
+      <List items={_items} deleteItem={deleteItem} selectItem={selectItem} />
+    );
+
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-
       <TheamButton onClick={toggleTheme}>
         {theme[currentTheme].buttonText}
       </TheamButton>
-
       <Title>My Shop</Title>
-
       <Description>Fabric Shop</Description>
-
       <ShopImage src={fabric} alt="Logo" />
+      {/* 
+      <ItemDetailes item={item} />
+      <FabricList items={_items} setItem={setItem} deleteItem={deleteItem} /> */}
 
-      <FabricList />
+      {setView()}
     </ThemeProvider>
   );
 }

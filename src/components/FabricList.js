@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Data
 import items from "../items";
@@ -9,15 +9,21 @@ import FabricItem from "./FabricItem";
 // style
 import { ListWrapper } from "../styles";
 
-const List = () => {
-  const [_items, setItems] = useState(items);
-  const deleteItem = (itemId) => {
-    const updatedItem = _items.filter((item) => item.id !== +itemId);
-    setItems(updatedItem);
-  };
+const List = (props) => {
+  // const [_items, setItems] = useState(items);
 
-  const itemsList = _items.map((item) => (
-    <FabricItem item={item} key={item.id} deleteItem={deleteItem} />
+  // const deleteItem = (itemId) => {
+  //   const updatedItem = _items.filter((item) => item.id !== +itemId);
+  //   setItems(updatedItem);
+  // };
+
+  const itemsList = props.items.map((item) => (
+    <FabricItem
+      item={item}
+      key={item.id}
+      deleteItem={props.deleteItem}
+      selectItem={props.selectItem}
+    />
   ));
 
   return <ListWrapper>{itemsList}</ListWrapper>;

@@ -24,11 +24,13 @@ const ListWrapper = styled.div`
 
 const FWrapper = styled.div`
   margin: 20px;
+  text-align: center;
   img {
     margin-left: 1px;
     width: 300px;
     height: 300px;
-    border: 2px solid #555;
+    border: 2px solid ${(props) => props.theme.head};
+
     padding: 5px;
   }
   p {
@@ -38,8 +40,6 @@ const FWrapper = styled.div`
     }
   }
 `;
-
-
 
 const TheamButton = styled.button`
   background-color: ${(props) => props.theme.head};
@@ -62,6 +62,22 @@ const DeleteButtonStyled = styled.p`
   color: red;
 `;
 
+const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+  }
+
+  p {
+    vertical-align: middle;
+  }
+`;
+
 export {
   TheamButton,
   Description,
@@ -71,4 +87,5 @@ export {
   FWrapper,
   GlobalStyle,
   DeleteButtonStyled,
+  DetailWrapper,
 };

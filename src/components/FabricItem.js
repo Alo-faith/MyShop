@@ -11,10 +11,14 @@ const FabricItem = (props) => {
   };
   return (
     <FWrapper>
-      <img src={item.image} alt={item.name} />
+      <img
+        src={item.image}
+        alt={item.name}
+        onClick={() => props.selectItem(item.id)}
+      />
       <p> {item.name} </p>
-
       <p className="item-price">{item.price} KD/ PER METRE</p>
+
       <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
     </FWrapper>
   );
