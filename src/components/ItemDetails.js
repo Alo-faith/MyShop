@@ -17,7 +17,6 @@ const ItemDetails = (props) => {
 
   return (
     <ListWrapper>
-      {/* <p onClick={() => props.stItem()}>Back</p> */}
       <FWrapper>
         <img src={item.image} alt={item.name} />
         <Description>{item.name}</Description>

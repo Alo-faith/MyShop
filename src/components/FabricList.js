@@ -12,7 +12,9 @@ import { ListWrapper } from "../styles";
 
 const List = (props) => {
   const [query, setQuery] = useState("");
-  const filterItems = props.items.filter((item) => item.name.includes(query));
+  const filterItems = props.items.filter((item) =>
+    item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
+  );
 
   const itemsList = filterItems.map((item) => (
     <FabricItem
