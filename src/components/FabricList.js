@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Data
 import items from "../items";
@@ -6,18 +6,15 @@ import items from "../items";
 // component
 import FabricItem from "./FabricItem";
 
+import SeachBar from "./SeacrchBar";
 // style
 import { ListWrapper } from "../styles";
 
 const List = (props) => {
-  // const [_items, setItems] = useState(items);
+  const [query, setQuery] = useState("");
+  const filterItems = props.items.filter((item) => item.name.includes(query));
 
-  // const deleteItem = (itemId) => {
-  //   const updatedItem = _items.filter((item) => item.id !== +itemId);
-  //   setItems(updatedItem);
-  // };
-
-  const itemsList = props.items.map((item) => (
+  const itemsList = filterItems.map((item) => (
     <FabricItem
       item={item}
       key={item.id}
@@ -26,7 +23,12 @@ const List = (props) => {
     />
   ));
 
-  return <ListWrapper>{itemsList}</ListWrapper>;
+  return (
+    <>
+      <SeachBar setQuery={setQuery} />
+      <ListWrapper>{itemsList}</ListWrapper>
+    </>
+  );
 };
 
 export default List;

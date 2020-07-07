@@ -78,6 +78,12 @@ const DetailWrapper = styled.div`
   }
 `;
 
+const SearchStyle = styled.input`
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+`;
 export {
   TheamButton,
   Description,
@@ -88,4 +94,5 @@ export {
   GlobalStyle,
   DeleteButtonStyled,
   DetailWrapper,
+  SearchStyle,
 };
