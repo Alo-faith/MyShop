@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-
-// Data
-import items from "../items";
+import { Link } from "react-router-dom";
 
 // component
 import FabricItem from "./FabricItem";
 
 import SeachBar from "./SeacrchBar";
 // style
-import { ListWrapper } from "../styles";
+import { ListWrapper, NavButton } from "../styles";
 
 const List = (props) => {
   const [query, setQuery] = useState("");
@@ -17,16 +15,15 @@ const List = (props) => {
   );
 
   const itemsList = filterItems.map((item) => (
-    <FabricItem
-      item={item}
-      key={item.id}
-      deleteItem={props.deleteItem}
-      selectItem={props.selectItem}
-    />
+    <FabricItem item={item} key={item.id} deleteItem={props.deleteItem} />
   ));
 
   return (
     <>
+      <Link to="/">
+        <NavButton>Home</NavButton>
+      </Link>
+
       <SeachBar setQuery={setQuery} />
       <ListWrapper>{itemsList}</ListWrapper>
     </>

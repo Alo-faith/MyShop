@@ -51,6 +51,16 @@ const TheamButton = styled.button`
   font-size: 16px;
   margin: 4px 2px;
 `;
+const NavButton = styled.button`
+  background-color: ${(props) => props.theme.head};
+  color: ${(props) => props.theme.backgroundColor};
+  padding: 15px 32px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+`;
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -95,4 +105,5 @@ export {
   DeleteButtonStyled,
   DetailWrapper,
   SearchStyle,
+  NavButton,
 };

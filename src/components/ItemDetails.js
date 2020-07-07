@@ -1,31 +1,32 @@
 import React from "react";
-import {
-  DeleteButtonStyled,
-  ListWrapper,
-  FWrapper,
-  Description,
-} from "../styles";
+import { ListWrapper, FWrapper, Description, NavButton } from "../styles";
 
 import DeleteButton from "./buttons/DeleteButton";
 
-const ItemDetails = (props) => {
-  const item = props.item;
+import { useParams, Link } from "react-router-dom";
 
-  // const handleDelete = () => {
-  //   props.deleteItem(item.id);
-  // };
+const ItemDetails = (props) => {
+  // const item = props.item;
+  const { itemId } = useParams();
+
+  const item = props.items.find((item) => item.id === +itemId);
 
   return (
-    <ListWrapper>
-      <FWrapper>
-        <img src={item.image} alt={item.name} />
-        <Description>{item.name}</Description>
-        <p>{item.description}</p>
-        <p>{item.price} KD</p>
+    <>
+      <Link to="/Fabic">
+        <NavButton>Back</NavButton>{" "}
+      </Link>
+      <ListWrapper>
+        <FWrapper>
+          <img src={item.image} alt={item.name} />
+          <Description>{item.name}</Description>
+          <p>{item.description}</p>
+          <p>{item.price} KD</p>
 
-        <DeleteButton itemId={item.id} deleteItem={props.deleteItem} />
-      </FWrapper>
-    </ListWrapper>
+          <DeleteButton itemId={item.id} deleteItem={props.deleteItem} />
+        </FWrapper>
+      </ListWrapper>
+    </>
   );
 };
 

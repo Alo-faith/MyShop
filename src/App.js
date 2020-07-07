@@ -1,28 +1,18 @@
 import React, { useState } from "react";
-//  logo
-import fabric from "./FabricLogo.png";
-
-//  style
-
+import { Route, Switch } from "react-router";
+import { Link } from "react-router-dom";
 // Detailes
 import ItemDetails from "./components/ItemDetails";
 
-import {
-  GlobalStyle,
-  Description,
-  ShopImage,
-  Title,
-  TheamButton,
-} from "./styles";
+//  style
+import { GlobalStyle, TheamButton } from "./styles";
 
 // Components
-import FabricList from "./components/FabricList";
-
-// Them
-import { ThemeProvider } from "styled-components";
-
 import items from "./items";
 import List from "./components/FabricList";
+import Home from "./components/Home";
+// Them
+import { ThemeProvider } from "styled-components";
 
 const theme = {
   light: {
@@ -51,7 +41,7 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [item, setItem] = useState(null);
+  // const [item, setItem] = useState(null);
   const [_items, setItems] = useState(items);
 
   const toggleTheme = () => {
@@ -67,20 +57,12 @@ function App() {
   const deleteItem = (itemId) => {
     const updatedItem = _items.filter((item) => item.id !== +itemId);
     setItems(updatedItem);
-    setItem(null);
   };
 
-  const selectItem = (itemId) => {
-    const selectedItem = items.find((item) => item.id === itemId);
-    setItem(selectedItem);
-  };
-
-  const setView = () =>
-    item ? (
-      <ItemDetails item={item} deleteItem={deleteItem} />
-    ) : (
-      <List items={_items} deleteItem={deleteItem} selectItem={selectItem} />
-    );
+  // const selectItem = (itemId) => {
+  //   const selectedItem = items.find((item) => item.id === itemId);
+  //   setItem(selectedItem);
+  // };
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
@@ -88,14 +70,20 @@ function App() {
       <TheamButton onClick={toggleTheme}>
         {theme[currentTheme].buttonText}
       </TheamButton>
-      <Title>My Shop</Title>
-      <Description>Fabric Shop</Description>
-      <ShopImage src={fabric} alt="Logo" />
-      {/* 
-      <ItemDetailes item={item} />
-      <FabricList items={_items} setItem={setItem} deleteItem={deleteItem} /> */}
 
-      {setView()}
+      <Switch>
+        <Route path="/Fabic/:itemId">
+          <ItemDetails items={_items} deleteItem={deleteItem} />
+        </Route>
+
+        <Route path="/Fabic">
+          <List items={_items} deleteItem={deleteItem} />
+        </Route>
+
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
     </ThemeProvider>
   );
 }
