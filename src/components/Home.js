@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 //  logo
 import fabric from "../FabricLogo.png";
 
 // style
-import { Title, Description, ShopImage, NavButton } from "../styles";
+import { Title, Description, ShopImage } from "../styles";
 
 const Home = () => {
   return (

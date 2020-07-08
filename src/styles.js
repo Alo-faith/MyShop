@@ -109,7 +109,7 @@ export const NavItem = styled(NavLink)`
   padding: 0.25em 1em;
   color: ${(props) => props.theme.head};
   text-align: center;
-  padding-top: 20px;
+  padding-top: 5px;
   font-weight: bold;
 
   display: inline-block;

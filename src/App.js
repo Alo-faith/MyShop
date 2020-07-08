@@ -45,14 +45,8 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [_items, setItems] = useState(items);
 
-  const toggleTheme = () => {
-    setCurrentTheme(
-      currentTheme === "light"
-        ? "dark"
-        : currentTheme === "dark"
-        ? "grey"
-        : "light"
-    );
+  const toggleTheme = (event) => {
+    setCurrentTheme(event === "1" ? "light" : event === "2" ? "dark" : "grey");
   };
 
   const deleteItem = (itemId) => {
@@ -68,7 +62,6 @@ function App() {
 
       <Switch>
         <Route path="/fabric/:itemUrl">
-          {/* <p> {"LINEN%20LAVENHAM%20-%20MUSTARD".replace(/%20/g, "-")}</p> */}
           <ItemDetails items={_items} deleteItem={deleteItem} />
         </Route>
 

@@ -5,7 +5,7 @@ import { useParams, Link, Redirect } from "react-router-dom";
 import DeleteButton from "./buttons/DeleteButton";
 
 // style
-import { ListWrapper, FWrapper, Description, NavButton } from "../styles";
+import { ListWrapper, FWrapper, Description } from "../styles";
 
 const ItemDetails = ({ items, deleteItem }) => {
   const { itemUrl } = useParams();
@@ -20,7 +20,6 @@ const ItemDetails = ({ items, deleteItem }) => {
           <Description>{item.name}</Description>
 
           <img src={item.image} alt={item.name} />
-
           <p>{item.description}</p>
           <p>{item.price} KD/ PER METRE</p>
 

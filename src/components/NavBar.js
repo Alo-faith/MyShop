@@ -2,12 +2,12 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 // style
-import { NavStyled, Logo, TheamButton, NavButton, NavItem } from "../styles";
+import { NavStyled, Logo, NavItem } from "../styles";
 
 //  logo
 import fabric from "../FabricLogo.png";
 
-const NavBar = ({ currentTheme, toggleTheme }) => {
+const NavBar = ({ toggleTheme }) => {
   return (
     <NavStyled className="navbar navbar-expand-lg ">
       <Logo className="navbar-brand" to="/">
@@ -20,14 +20,15 @@ const NavBar = ({ currentTheme, toggleTheme }) => {
             Fabirc
           </NavItem>
 
-          <TheamButton className="nav-item" onClick={toggleTheme}>
-            {currentTheme === "light"
-              ? "Dark"
-              : currentTheme === "dark"
-              ? "Grey"
-              : "light"}{" "}
-            Mode
-          </TheamButton>
+          <select
+            class="custom-select"
+            defaultValue="1"
+            onChange={(e) => toggleTheme(e.target.value)}
+          >
+            <option value="1">Light Mode</option>
+            <option value="2">Dark Mode</option>
+            <option value="3">Grey Mode</option>
+          </select>
         </div>
       </div>
     </NavStyled>
