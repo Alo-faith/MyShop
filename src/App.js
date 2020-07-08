@@ -4,13 +4,14 @@ import { Route, Switch } from "react-router";
 // Detailes
 import ItemDetails from "./components/ItemDetails";
 
-//  style
-import { GlobalStyle, TheamButton } from "./styles";
+// //  style
+import { GlobalStyle } from "./styles";
 
 // Components
 import items from "./items";
 import List from "./components/FabricList";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 
 // Them
 import { ThemeProvider } from "styled-components";
@@ -62,17 +63,16 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <TheamButton onClick={toggleTheme}>
-        {theme[currentTheme].buttonText}
-      </TheamButton>
+
+      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
       <Switch>
-        <Route path="/Fabic/:itemUrl">
+        <Route path="/fabric/:itemUrl">
           {/* <p> {"LINEN%20LAVENHAM%20-%20MUSTARD".replace(/%20/g, "-")}</p> */}
           <ItemDetails items={_items} deleteItem={deleteItem} />
         </Route>
 
-        <Route path="/Fabic">
+        <Route path="/fabric">
           <List items={_items} deleteItem={deleteItem} />
         </Route>
 

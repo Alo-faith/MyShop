@@ -6,25 +6,21 @@ import FabricItem from "./FabricItem";
 import SeachBar from "./SeacrchBar";
 
 // style
-import { ListWrapper, NavButton } from "../styles";
+import { ListWrapper } from "../styles";
 
-const List = (props) => {
+const List = ({ items, deleteItem }) => {
   const [query, setQuery] = useState("");
 
-  const filterItems = props.items.filter((item) =>
+  const filterItems = items.filter((item) =>
     item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
   );
 
   const itemsList = filterItems.map((item) => (
-    <FabricItem item={item} key={item.id} deleteItem={props.deleteItem} />
+    <FabricItem item={item} key={item.id} deleteItem={deleteItem} />
   ));
 
   return (
     <>
-      <Link to="/">
-        <NavButton>Home</NavButton>
-      </Link>
-
       <SeachBar setQuery={setQuery} />
 
       <ListWrapper>{itemsList}</ListWrapper>

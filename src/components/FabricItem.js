@@ -7,19 +7,17 @@ import DeleteButton from "./buttons/DeleteButton";
 // style
 import { FWrapper } from "../styles";
 
-const FabricItem = (props) => {
-  const item = props.item;
-
+const FabricItem = ({ item, deleteItem }) => {
   return (
     <FWrapper>
-      <Link to={`/Fabic/${item.url}`}>
+      <Link to={`/fabric/${item.url}`}>
         <img src={item.image} alt={item.name} />
       </Link>
 
       <p> {item.name} </p>
       <p className="item-price">{item.price} KD/ PER METRE</p>
 
-      <DeleteButton itemId={item.id} deleteItem={props.deleteItem} />
+      <DeleteButton itemId={item.id} deleteItem={deleteItem} />
     </FWrapper>
   );
 };

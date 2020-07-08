@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
 export const Title = styled.h1`
   text-align: center;
@@ -30,7 +31,6 @@ export const FWrapper = styled.div`
     width: 300px;
     height: 300px;
     border: 2px solid ${(props) => props.theme.head};
-
     padding: 5px;
   }
   p {
@@ -93,4 +93,29 @@ export const SearchStyle = styled.input`
   margin: 1rem auto;
   display: block;
   width: 40%;
+`;
+export const NavStyled = styled.nav`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const Logo = styled(Link)`
+  padding: 0px;
+
+  img {
+    width: 160px;
+  }
+`;
+export const NavItem = styled(NavLink)`
+  padding: 0.25em 1em;
+  color: ${(props) => props.theme.head};
+  text-align: center;
+  padding-top: 20px;
+  font-weight: bold;
+
+  display: inline-block;
+  font-size: 20px;
+
+  &.active {
+    color: #e85d04;
+  }
 `;
