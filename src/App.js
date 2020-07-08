@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import { Link } from "react-router-dom";
+
 // Detailes
 import ItemDetails from "./components/ItemDetails";
 
@@ -11,6 +11,7 @@ import { GlobalStyle, TheamButton } from "./styles";
 import items from "./items";
 import List from "./components/FabricList";
 import Home from "./components/Home";
+
 // Them
 import { ThemeProvider } from "styled-components";
 
@@ -41,7 +42,6 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  // const [item, setItem] = useState(null);
   const [_items, setItems] = useState(items);
 
   const toggleTheme = () => {
@@ -59,11 +59,6 @@ function App() {
     setItems(updatedItem);
   };
 
-  // const selectItem = (itemId) => {
-  //   const selectedItem = items.find((item) => item.id === itemId);
-  //   setItem(selectedItem);
-  // };
-
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
@@ -72,7 +67,8 @@ function App() {
       </TheamButton>
 
       <Switch>
-        <Route path="/Fabic/:itemId">
+        <Route path="/Fabic/:itemUrl">
+          {/* <p> {"LINEN%20LAVENHAM%20-%20MUSTARD".replace(/%20/g, "-")}</p> */}
           <ItemDetails items={_items} deleteItem={deleteItem} />
         </Route>
 
@@ -80,7 +76,7 @@ function App() {
           <List items={_items} deleteItem={deleteItem} />
         </Route>
 
-        <Route exact path="/">
+        <Route path="/">
           <Home />
         </Route>
       </Switch>

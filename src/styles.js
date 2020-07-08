@@ -1,28 +1,28 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: ${(props) => props.theme.head};
 `;
 
-const Description = styled.h2`
+export const Description = styled.h2`
   text-align: center;
 `;
 
-const ShopImage = styled.img`
+export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 400px;
 `;
 
-const ListWrapper = styled.div`
+export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
 
-const FWrapper = styled.div`
+export const FWrapper = styled.div`
   margin: 20px;
   text-align: center;
   img {
@@ -41,7 +41,7 @@ const FWrapper = styled.div`
   }
 `;
 
-const TheamButton = styled.button`
+export const TheamButton = styled.button`
   background-color: ${(props) => props.theme.head};
   color: ${(props) => props.theme.backgroundColor};
   padding: 15px 32px;
@@ -51,7 +51,7 @@ const TheamButton = styled.button`
   font-size: 16px;
   margin: 4px 2px;
 `;
-const NavButton = styled.button`
+export const NavButton = styled.button`
   background-color: ${(props) => props.theme.head};
   color: ${(props) => props.theme.backgroundColor};
   padding: 15px 32px;
@@ -62,17 +62,17 @@ const NavButton = styled.button`
   margin: 4px 2px;
 `;
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     color:  ${(props) => props.theme.mainColor};
     background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
-const DeleteButtonStyled = styled.p`
+export const DeleteButtonStyled = styled.p`
   color: red;
 `;
 
-const DetailWrapper = styled.div`
+export const DetailWrapper = styled.div`
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -88,22 +88,9 @@ const DetailWrapper = styled.div`
   }
 `;
 
-const SearchStyle = styled.input`
+export const SearchStyle = styled.input`
   padding: 0.5rem;
   margin: 1rem auto;
   display: block;
   width: 40%;
 `;
-export {
-  TheamButton,
-  Description,
-  Title,
-  ShopImage,
-  ListWrapper,
-  FWrapper,
-  GlobalStyle,
-  DeleteButtonStyled,
-  DetailWrapper,
-  SearchStyle,
-  NavButton,
-};

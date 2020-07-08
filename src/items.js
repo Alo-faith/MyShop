@@ -1,6 +1,7 @@
 const items = [
   {
     id: 1,
+    url: "LINEN-LAVENHAM-MUSTARD",
     name: "LINEN LAVENHAM - MUSTARD",
     price: 5,
     description: "WIDTH	150 cm - COMPOSITION	100% Linen",
@@ -9,6 +10,7 @@ const items = [
   },
   {
     id: 2,
+    url: "Organic-Cotton",
     name: "Organic Cotton",
     price: 4,
     description: "Width: 57/58-inches - Content: 55% Hemp, 45% Organic Cotton",
@@ -17,6 +19,7 @@ const items = [
   },
   {
     id: 3,
+    url: "BlackP-lain-Polyester",
     name: " Black Plain Polyester Cotton Fabric",
     price: 6,
     description: "Width: 57/58-inches  Content: 100% Polyester  ",
