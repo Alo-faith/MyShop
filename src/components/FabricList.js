@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 // component
 import FabricItem from "./FabricItem";
 import SeachBar from "./SeacrchBar";
+import AddButton from "./buttons/AddButton";
 
 // style
 import { ListWrapper } from "../styles";
 
-const List = ({ items, deleteItem }) => {
+const List = ({ items, deleteItem, createFabric }) => {
   const [query, setQuery] = useState("");
 
   const filterItems = items.filter((item) =>
@@ -24,6 +25,7 @@ const List = ({ items, deleteItem }) => {
       <SeachBar setQuery={setQuery} />
 
       <ListWrapper>{itemsList}</ListWrapper>
+      <AddButton createFabric={createFabric} />
     </>
   );
 };

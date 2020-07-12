@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-
+import { Helmet } from "react-helmet";
+import Favicon from "./logo.png";
 // Detailes
 import ItemDetails from "./components/ItemDetails";
 
@@ -45,6 +46,13 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [_items, setItems] = useState(items);
 
+  const createFabric = (newFabric) => {
+    const updatedFabric = [..._items, newFabric];
+    // const updatedFabric = _items;
+    // updatedFabric.push(newFabric);
+    setItems(updatedFabric);
+  };
+
   const toggleTheme = (event) => {
     setCurrentTheme(event === "1" ? "light" : event === "2" ? "dark" : "grey");
   };
@@ -55,25 +63,36 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme[currentTheme]}>
-      <GlobalStyle />
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fabric Shop</title>
+        <link rel="canonical" href={Favicon} />
+      </Helmet>
+      <ThemeProvider theme={theme[currentTheme]}>
+        <GlobalStyle />
 
-      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+        <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
-      <Switch>
-        <Route path="/fabric/:itemUrl">
-          <ItemDetails items={_items} deleteItem={deleteItem} />
-        </Route>
+        <Switch>
+          <Route path="/fabric/:itemUrl">
+            <ItemDetails items={_items} deleteItem={deleteItem} />
+          </Route>
 
-        <Route path="/fabric">
-          <List items={_items} deleteItem={deleteItem} />
-        </Route>
+          <Route path="/fabric">
+            <List
+              items={_items}
+              deleteItem={deleteItem}
+              createFabric={createFabric}
+            />
+          </Route>
 
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </ThemeProvider>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </ThemeProvider>
+    </>
   );
 }
 export default App;

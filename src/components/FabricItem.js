@@ -9,7 +9,7 @@ import { FWrapper } from "../styles";
 
 const FabricItem = ({ item, deleteItem }) => {
   return (
-    <FWrapper>
+    <FWrapper layout="flexbox">
       <Link to={`/fabric/${item.url}`}>
         <img src={item.image} alt={item.name} />
       </Link>

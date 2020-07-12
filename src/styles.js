@@ -102,7 +102,7 @@ export const Logo = styled(Link)`
   padding: 0px;
 
   img {
-    width: 160px;
+    width: 140px;
   }
 `;
 export const NavItem = styled(NavLink)`
@@ -117,5 +117,14 @@ export const NavItem = styled(NavLink)`
 
   &.active {
     color: #e85d04;
+  }
+`;
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
