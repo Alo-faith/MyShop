@@ -12,7 +12,7 @@ import AddButton from "./buttons/AddButton";
 // style
 import { ListWrapper } from "../styles";
 
-const List = ({ deleteItem, createFabric }) => {
+const List = () => {
   const [query, setQuery] = useState("");
 
   const filterItems = itemStore.items.filter((item) =>
@@ -20,7 +20,7 @@ const List = ({ deleteItem, createFabric }) => {
   );
 
   const itemsList = filterItems.map((item) => (
-    <FabricItem item={item} key={item.id} deleteItem={deleteItem} />
+    <FabricItem item={item} key={item.id} />
   ));
 
   return (
@@ -28,7 +28,7 @@ const List = ({ deleteItem, createFabric }) => {
       <SeachBar setQuery={setQuery} />
 
       <ListWrapper>{itemsList}</ListWrapper>
-      <AddButton createFabric={createFabric} />
+      <AddButton />
     </>
   );
 };

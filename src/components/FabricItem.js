@@ -7,7 +7,7 @@ import DeleteButton from "./buttons/DeleteButton";
 // style
 import { FWrapper } from "../styles";
 
-const FabricItem = ({ item, deleteItem }) => {
+const FabricItem = ({ item }) => {
   return (
     <FWrapper layout="flexbox">
       <Link to={`/fabric/${item.url}`}>
@@ -17,7 +17,7 @@ const FabricItem = ({ item, deleteItem }) => {
       <p> {item.name} </p>
       <p className="item-price">{item.price} KD/ PER METRE</p>
 
-      <DeleteButton itemId={item.id} deleteItem={deleteItem} />
+      <DeleteButton itemId={item.id} />
     </FWrapper>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import FabicModal from "../modals/FabicModal";
 
-const AddButton = ({ createFabric }) => {
+const AddButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
