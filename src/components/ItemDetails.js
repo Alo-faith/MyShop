@@ -1,5 +1,9 @@
 import React from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
+import { observer } from "mobx-react";
+
+// Stores
+import itemStore from "../stores/itemStore";
 
 // component
 import DeleteButton from "./buttons/DeleteButton";
@@ -7,9 +11,9 @@ import DeleteButton from "./buttons/DeleteButton";
 // style
 import { ListWrapper, FWrapper, Description } from "../styles";
 
-const ItemDetails = ({ items, deleteItem }) => {
+const ItemDetails = () => {
   const { itemUrl } = useParams();
-  const item = items.find((item) => item.url === itemUrl);
+  const item = itemStore.items.find((item) => item.url === itemUrl);
 
   if (!item) return <Redirect to="/fabric" />;
 
@@ -23,11 +27,11 @@ const ItemDetails = ({ items, deleteItem }) => {
           <p>{item.description}</p>
           <p>{item.price} KD/ PER METRE</p>
 
-          <DeleteButton itemId={item.id} deleteItem={deleteItem} />
+          <DeleteButton itemId={item.id} />
         </FWrapper>
       </ListWrapper>
     </>
   );
 };
 
-export default ItemDetails;
+export default observer(ItemDetails);

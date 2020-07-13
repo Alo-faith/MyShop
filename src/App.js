@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 import { Helmet } from "react-helmet";
 import Favicon from "./logo.png";
+
 // Detailes
 import ItemDetails from "./components/ItemDetails";
 
@@ -44,22 +45,9 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_items, setItems] = useState(items);
-
-  const createFabric = (newFabric) => {
-    const updatedFabric = [..._items, newFabric];
-    // const updatedFabric = _items;
-    // updatedFabric.push(newFabric);
-    setItems(updatedFabric);
-  };
 
   const toggleTheme = (event) => {
     setCurrentTheme(event === "1" ? "light" : event === "2" ? "dark" : "grey");
-  };
-
-  const deleteItem = (itemId) => {
-    const updatedItem = _items.filter((item) => item.id !== +itemId);
-    setItems(updatedItem);
   };
 
   return (
@@ -76,15 +64,11 @@ function App() {
 
         <Switch>
           <Route path="/fabric/:itemUrl">
-            <ItemDetails items={_items} deleteItem={deleteItem} />
+            <ItemDetails />
           </Route>
 
           <Route path="/fabric">
-            <List
-              items={_items}
-              deleteItem={deleteItem}
-              createFabric={createFabric}
-            />
+            <List />
           </Route>
 
           <Route path="/">

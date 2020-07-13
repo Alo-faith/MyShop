@@ -128,3 +128,12 @@ export const CreateButtonStyled = styled.button`
     background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
+
+export const customStyles = styled.form`
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+`;

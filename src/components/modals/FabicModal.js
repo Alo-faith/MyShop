@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-import { CreateButtonStyled } from "../../styles";
+// Stores
+import itemStore from "../../stores/itemStore";
 
-const FabricModal = ({ isOpen, closeModal, createFabric }) => {
+// styles
+import { CreateButtonStyled, customStyles } from "../../styles";
+
+const FabricModal = ({ isOpen, closeModal }) => {
   const [fabric, setFabric] = useState({
+    id: 0,
     name: "",
+    url: "",
     price: 0,
     description: "",
     image: "",
@@ -18,7 +24,7 @@ const FabricModal = ({ isOpen, closeModal, createFabric }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createFabric(fabric);
+    itemStore.createFabric(fabric);
     closeModal();
   };
 
@@ -26,7 +32,7 @@ const FabricModal = ({ isOpen, closeModal, createFabric }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={closeModal}
-      //   style={modalStyle}
+      style={customStyles}
       contentLabel="Fabric Modal"
     >
       <form onSubmit={handleSubmit}>
@@ -38,8 +44,10 @@ const FabricModal = ({ isOpen, closeModal, createFabric }) => {
               className="form-control"
               name="name"
               onChange={handleChange}
+              required
             />
           </div>
+
           <div className="col-6">
             <label>Price</label>
             <input
@@ -47,17 +55,34 @@ const FabricModal = ({ isOpen, closeModal, createFabric }) => {
               min="1"
               className="form-control"
               name="price"
-            />
+              onChange={handleChange}
+              required
+            ></input>
           </div>
         </div>
+
         <div className="form-group">
           <label>Description</label>
-          <input type="text" className="form-control" name="description" />
+          <input
+            type="text"
+            className="form-control"
+            name="description"
+            onChange={handleChange}
+            required
+          />
         </div>
+
         <div className="form-group">
           <label>Image</label>
-          <input type="text" className="form-control" name="image" />
+          <input
+            type="text"
+            className="form-control"
+            name="image"
+            onChange={handleChange}
+            required
+          />
         </div>
+
         <CreateButtonStyled className="btn float-right">
           Create
         </CreateButtonStyled>

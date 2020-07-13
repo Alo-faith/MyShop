@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
+
+// Stores
+import itemStore from "../stores/itemStore";
 
 // component
 import FabricItem from "./FabricItem";
@@ -9,10 +12,10 @@ import AddButton from "./buttons/AddButton";
 // style
 import { ListWrapper } from "../styles";
 
-const List = ({ items, deleteItem, createFabric }) => {
+const List = ({ deleteItem, createFabric }) => {
   const [query, setQuery] = useState("");
 
-  const filterItems = items.filter((item) =>
+  const filterItems = itemStore.items.filter((item) =>
     item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
   );
 
@@ -30,4 +33,4 @@ const List = ({ items, deleteItem, createFabric }) => {
   );
 };
 
-export default List;
+export default observer(List);

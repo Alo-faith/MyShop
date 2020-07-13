@@ -15,11 +15,7 @@ const AddButton = ({ createFabric }) => {
         size="2em"
         onClick={() => setIsOpen(true)}
       />
-      <FabicModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        createFabric={createFabric}
-      />
+      <FabicModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };
