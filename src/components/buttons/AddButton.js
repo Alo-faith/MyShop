@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
+
+// Modal
 import FabricModal from "../modals/FabicModal";
+
+// Styles
+import { AddButtonStyle } from "./styles";
 
 const AddButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +15,13 @@ const AddButton = () => {
 
   return (
     <>
-      <AiFillPlusCircle
-        className="float-right"
-        size="2em"
-        onClick={() => setIsOpen(true)}
-      />
+      <AddButtonStyle>
+        <AiFillPlusCircle
+          className="float-right"
+          size="2em"
+          onClick={() => setIsOpen(true)}
+        />
+      </AddButtonStyle>
       <FabricModal isOpen={isOpen} closeModal={closeModal} />
     </>
   );

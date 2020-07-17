@@ -11,7 +11,6 @@ class ItemStore {
 
   createFabric = (newFabric) => {
     newFabric.id = this.items[this.items.length - 1].id + 1;
-    // newFabric.url = newFabric.name.replace(/ /g, "-");
     newFabric.url = slugify(newFabric.name);
     this.items.push(newFabric);
   };
@@ -19,6 +18,7 @@ class ItemStore {
   deleteItem = (itemId) => {
     this.items = this.items.filter((item) => item.id !== +itemId);
   };
+
   updateItem = (updatedItem) => {
     const item = this.items.find((item) => item.id === updatedItem.id);
     for (const key in item) item[key] = updatedItem[key];

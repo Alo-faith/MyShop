@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
+import { Link } from "react-router-dom";
+
 //  Component
-import DeleteButton from "./buttons/DeleteButton";
-import UpdateButton from "./buttons/UpdateButton";
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
 
 // style
-import { FWrapper } from "../styles";
+import { FWrapper } from "./styles";
 
 const FabricItem = ({ item }) => {
   return (

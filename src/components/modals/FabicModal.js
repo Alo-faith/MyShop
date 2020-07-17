@@ -5,17 +5,11 @@ import Modal from "react-modal";
 import itemStore from "../../stores/itemStore";
 
 // styles
-import { CreateButtonStyled, customStyles } from "../../styles";
+import { CreateButtonStyled, customStyles } from "./styles";
 
 const FabricModal = ({ isOpen, closeModal, oldItem }) => {
-  const [fabric, setFabric] = useState(
-    oldItem ?? {
-      name: "",
-      price: 0,
-      description: "",
-      image: "",
-    }
-  );
+  const resetForm = { name: "", price: 0, description: "", image: "" };
+  const [fabric, setFabric] = useState(oldItem ?? resetForm);
 
   const handleChange = (event) => {
     const newFabric = { ...fabric, [event.target.name]: event.target.value };
@@ -26,6 +20,7 @@ const FabricModal = ({ isOpen, closeModal, oldItem }) => {
     event.preventDefault();
     itemStore[oldItem ? "updateItem" : "createFabric"](fabric);
     closeModal();
+    setFabric(resetForm);
   };
 
   return (

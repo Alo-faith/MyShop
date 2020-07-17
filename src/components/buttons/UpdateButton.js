@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import FabricModal from "../modals/FabicModal";
 
 // Styling
-import { UpdateButtonStyled } from "../../styles";
+import { UpdateButtonStyled } from "./styles";
 
 const UpdateButton = ({ oldItem }) => {
   const [isOpen, setIsOpen] = useState(false);

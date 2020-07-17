@@ -4,16 +4,15 @@ import { Helmet } from "react-helmet";
 import Favicon from "./logo.png";
 
 // Detailes
-import ItemDetails from "./components/ItemDetails";
+import ItemDetails from "./components/fabricDetails";
 
 // //  style
 import { GlobalStyle } from "./styles";
 
 // Components
-import items from "./items";
-import List from "./components/FabricList";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
+import List from "./components/fabricList";
+import Home from "./components/home";
+import NavBar from "./components/navBar";
 
 // Them
 import { ThemeProvider } from "styled-components";
@@ -44,10 +43,13 @@ const theme = {
 };
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const savedTheme = localStorage.getItem("theme") ?? "light";
+  const [currentTheme, setCurrentTheme] = useState(savedTheme);
 
   const toggleTheme = (event) => {
-    setCurrentTheme(event === "1" ? "light" : event === "2" ? "dark" : "grey");
+    const newTheme = event === "1" ? "light" : event === "2" ? "dark" : "grey";
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (
@@ -57,6 +59,7 @@ function App() {
         <title>Fabric Shop</title>
         <link rel="canonical" href={Favicon} />
       </Helmet>
+
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
 

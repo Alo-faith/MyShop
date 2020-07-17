@@ -1,17 +1,16 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 
 // style
-import { NavStyled, Logo, NavItem } from "../styles";
+import { NavStyled, Logo, NavItem } from "./styles";
 
 //  logo
-import fabric from "../FabricLogo.png";
+import fabric from "../../FabricLogo.png";
 
 const NavBar = ({ toggleTheme }) => {
   return (
     <NavStyled className="navbar navbar-expand-lg ">
       <Logo className="navbar-brand" to="/">
-        <img src={fabric} />
+        <img src={fabric} alt="fabric" />
       </Logo>
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -21,7 +20,7 @@ const NavBar = ({ toggleTheme }) => {
           </NavItem>
 
           <select
-            class="custom-select"
+            className="custom-select"
             defaultValue="1"
             onChange={(e) => toggleTheme(e.target.value)}
           >

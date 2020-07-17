@@ -1,10 +1,10 @@
 import React from "react";
 
 //  logo
-import fabric from "../FabricLogo.png";
+import fabric from "../../FabricLogo.png";
 
 // style
-import { Title, Description, ShopImage } from "../styles";
+import { Title, Description, ShopImage } from "./styles";
 
 const Home = () => {
   return (

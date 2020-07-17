@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 // Stores
-import itemStore from "../stores/itemStore";
+import itemStore from "../../stores/itemStore";
 
 // component
 import FabricItem from "./FabricItem";
-import SeachBar from "./SeacrchBar";
-import AddButton from "./buttons/AddButton";
+import SeachBar from "../searchBar";
+import AddButton from "../buttons/AddButton";
 
 // style
-import { ListWrapper } from "../styles";
+import { ListWrapper } from "./styles";
 
 const List = () => {
   const [query, setQuery] = useState("");

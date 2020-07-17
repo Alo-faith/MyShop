@@ -1,7 +1,7 @@
 import React from "react";
 
 // style
-import { SearchStyle } from "../styles";
+import { SearchStyle } from "./styles";
 
 const SearchBar = (props) => {
   return (
