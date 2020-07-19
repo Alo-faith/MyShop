@@ -1,13 +1,22 @@
 import { decorate, observable } from "mobx";
-
+import axios from "axios";
 // data
-import items from "../items";
+// import items from "../items";
 
 // slug
 import slugify from "react-slugify";
 
 class ItemStore {
-  items = items;
+  items = [];
+
+  fetchItems = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/fabrics");
+      this.items = response.data;
+    } catch (error) {
+      console.error("itemStore -> fetchItems -> error", error);
+    }
+  };
 
   createFabric = (newFabric) => {
     newFabric.id = this.items[this.items.length - 1].id + 1;
@@ -30,4 +39,5 @@ decorate(ItemStore, {
 });
 
 const itemStore = new ItemStore();
+itemStore.fetchItems();
 export default itemStore;
