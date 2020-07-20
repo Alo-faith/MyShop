@@ -13,7 +13,7 @@ import { FWrapper } from "./styles";
 const FabricItem = ({ item }) => {
   return (
     <FWrapper layout="flexbox">
-      <Link to={`/fabric/${item.url}`}>
+      <Link to={`/fabric/${item.slug}`}>
         <img src={item.image} alt={item.name} />
       </Link>
 

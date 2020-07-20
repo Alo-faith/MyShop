@@ -18,16 +18,18 @@ class ItemStore {
     }
   };
 
-  createFabric = (newFabric) => {
-    newFabric.id = this.items[this.items.length - 1].id + 1;
-    newFabric.url = slugify(newFabric.name);
-    this.items.push(newFabric);
+  createFabric = async (newFabric) => {
+    try {
+      const res = await axios.post("http://localhost:8000/fabrics", newFabric);
+      this.items.push(res.data);
+    } catch (error) {
+      console.error("itemStore -> createFabric -> error", error);
+    }
   };
 
   deleteItem = async (itemId) => {
     try {
       await axios.delete(`http://localhost:8000/fabrics/${itemId}`);
-
       this.items = this.items.filter((item) => item.id !== +itemId);
     } catch (error) {
       console.error("itemStore -> deleteItem -> error", error);

@@ -13,8 +13,8 @@ import UpdateButton from "../buttons/UpdateButton";
 import { FWrapper, Description } from "./styles";
 
 const ItemDetails = () => {
-  const { itemUrl } = useParams();
-  const item = itemStore.items.find((item) => item.url === itemUrl);
+  const { itemSlug } = useParams();
+  const item = itemStore.items.find((item) => item.slug === itemSlug);
 
   if (!item) return <Redirect to="/fabric" />;
 

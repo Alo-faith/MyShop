@@ -66,7 +66,7 @@ function App() {
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
 
         <Switch>
-          <Route path="/fabric/:itemUrl">
+          <Route path="/fabric/:itemSlug">
             <ItemDetails />
           </Route>
 
