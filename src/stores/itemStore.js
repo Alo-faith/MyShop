@@ -24,8 +24,14 @@ class ItemStore {
     this.items.push(newFabric);
   };
 
-  deleteItem = (itemId) => {
-    this.items = this.items.filter((item) => item.id !== +itemId);
+  deleteItem = async (itemId) => {
+    try {
+      await axios.delete(`http://localhost:8000/fabrics/${itemId}`);
+
+      this.items = this.items.filter((item) => item.id !== +itemId);
+    } catch (error) {
+      console.error("itemStore -> deleteItem -> error", error);
+    }
   };
 
   updateItem = (updatedItem) => {
@@ -40,4 +46,5 @@ decorate(ItemStore, {
 
 const itemStore = new ItemStore();
 itemStore.fetchItems();
+
 export default itemStore;
