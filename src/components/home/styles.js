@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const Title = styled.h1`
-  text-align: center;
-  color: ${(props) => props.theme.head};
-`;
-
 export const Description = styled.h2`
   text-align: center;
 `;

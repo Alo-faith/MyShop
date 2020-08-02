@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 
-// Stores
-import itemStore from "../../stores/itemStore";
-
 // component
 import FabricItem from "./FabricItem";
-import SeachBar from "../searchBar";
-import AddButton from "../buttons/AddButton";
+import SeachBar from "../SearchBar";
+import itemStore from "../../stores/itemStore";
 
 // style
 import { ListWrapper } from "./styles";
 
-const List = () => {
+const List = ({ fabrics }) => {
   const [query, setQuery] = useState("");
 
-  const filterItems = itemStore.items.filter((item) =>
+  const filterItems = fabrics.filter((item) =>
     item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
   );
 
@@ -26,9 +23,7 @@ const List = () => {
   return (
     <>
       <SeachBar setQuery={setQuery} />
-
       <ListWrapper>{itemsList}</ListWrapper>
-      <AddButton />
     </>
   );
 };

@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router";
-import { Helmet } from "react-helmet";
-import Favicon from "./logo.png";
-
-// Detailes
-import ItemDetails from "./components/fabricDetails";
+import { observer } from "mobx-react";
 
 // //  style
 import { GlobalStyle } from "./styles";
 
 // Components
-import List from "./components/fabricList";
-import Home from "./components/home";
 import NavBar from "./components/navBar";
+import Routes from "./components/Routes";
+
+// Stores
+import shopStore from "./stores/shopStore";
 
 // Them
 import { ThemeProvider } from "styled-components";
+import itemStore from "./stores/itemStore";
 
 const theme = {
   light: {
@@ -54,32 +52,12 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Fabric Shop</title>
-        <link rel="canonical" href={Favicon} />
-      </Helmet>
-
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
-
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-
-        <Switch>
-          <Route path="/fabric/:itemSlug">
-            <ItemDetails />
-          </Route>
-
-          <Route path="/fabric">
-            <List />
-          </Route>
-
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        {shopStore.loading || itemStore.loading ? <h1>loading</h1> : <Routes />}
       </ThemeProvider>
     </>
   );
 }
-export default App;
+export default observer(App);

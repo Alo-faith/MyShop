@@ -15,7 +15,11 @@ const NavBar = ({ toggleTheme }) => {
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
-          <NavItem className="nav-item" to="/fabric">
+          <NavItem className="nav-item" to="/shops">
+            shops
+          </NavItem>
+
+          <NavItem className="nav-item" to="/fabrics">
             Fabirc
           </NavItem>
 

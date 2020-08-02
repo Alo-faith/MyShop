@@ -7,8 +7,9 @@ import itemStore from "../../stores/itemStore";
 // styles
 import { CreateButtonStyled, customStyles } from "./styles";
 
-const FabricModal = ({ isOpen, closeModal, oldItem }) => {
-  const resetForm = { name: "", price: 0, description: "", image: "" };
+const FabricModal = ({ shopId, isOpen, closeModal, oldItem }) => {
+  if (!shopId) shopId = oldItem.shopId;
+  const resetForm = { shopId, name: "", price: 0, description: "", image: "" };
   const [fabric, setFabric] = useState(oldItem ?? resetForm);
 
   const handleChange = (event) => {
@@ -16,11 +17,14 @@ const FabricModal = ({ isOpen, closeModal, oldItem }) => {
     setFabric(newFabric);
   };
 
+  const handleImage = (event) =>
+    setFabric({ ...fabric, image: event.target.files[0] });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     itemStore[oldItem ? "updateItem" : "createFabric"](fabric);
+    // setFabric(resetForm);
     closeModal();
-    setFabric(resetForm);
   };
 
   return (
@@ -73,12 +77,10 @@ const FabricModal = ({ isOpen, closeModal, oldItem }) => {
         <div className="form-group">
           <label>Image</label>
           <input
-            type="text"
+            type="file"
             className="form-control"
             name="image"
-            value={fabric.image}
-            onChange={handleChange}
-            required
+            onChange={handleImage}
           />
         </div>
 

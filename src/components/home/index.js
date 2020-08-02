@@ -4,13 +4,14 @@ import React from "react";
 import fabric from "../../FabricLogo.png";
 
 // style
-import { Title, Description, ShopImage } from "./styles";
+import { Description, ShopImage } from "./styles";
+import { Title } from "../../styles";
 
 const Home = () => {
   return (
     <>
       <Title>My Shop</Title>
-      <Description>Fabric Shop</Description>
+
       <ShopImage src={fabric} alt="Logo" />
     </>
   );

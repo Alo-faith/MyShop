@@ -5,10 +5,15 @@ import { observer } from "mobx-react";
 import itemStore from "../../stores/itemStore";
 // style
 import { DeleteButtonStyled } from "./styles";
+import shopStore from "../../stores/shopStore";
 
-const DeleteButton = ({ itemId }) => {
+const DeleteButton = ({ shopId, itemId }) => {
   const handleDelete = () => {
-    itemStore.deleteItem(itemId);
+    if (itemId) {
+      itemStore.deleteItem(itemId);
+    } else {
+      shopStore.deleteShop(shopId);
+    }
   };
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
 };

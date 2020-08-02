@@ -6,7 +6,7 @@ import { SearchStyle } from "./styles";
 const SearchBar = (props) => {
   return (
     <SearchStyle
-      placeholder="Search for a fabic name"
+      placeholder="Search for name"
       onChange={(event) => props.setQuery(event.target.value)}
     />
   );

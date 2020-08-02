@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 // Modal
 import FabricModal from "../modals/FabicModal";
+import ShopModal from "../modals/ShopModal";
 
 // Styling
 import { UpdateButtonStyled } from "./styles";
 
-const UpdateButton = ({ oldItem }) => {
+const UpdateButton = ({ oldItem, oldShop }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -15,7 +16,15 @@ const UpdateButton = ({ oldItem }) => {
   return (
     <>
       <UpdateButtonStyled onClick={openModal}>Update</UpdateButtonStyled>
-      <FabricModal isOpen={isOpen} closeModal={closeModal} oldItem={oldItem} />
+      {oldItem ? (
+        <FabricModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          oldItem={oldItem}
+        />
+      ) : (
+        <ShopModal isOpen={isOpen} closeModal={closeModal} oldShop={oldShop} />
+      )}
     </>
   );
 };

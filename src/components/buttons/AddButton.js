@@ -3,11 +3,11 @@ import { AiFillPlusCircle } from "react-icons/ai";
 
 // Modal
 import FabricModal from "../modals/FabicModal";
-
+import ShopModal from "../modals/ShopModal";
 // Styles
 import { AddButtonStyle } from "./styles";
 
-const AddButton = () => {
+const AddButton = ({ shopId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -22,7 +22,11 @@ const AddButton = () => {
           onClick={() => setIsOpen(true)}
         />
       </AddButtonStyle>
-      <FabricModal isOpen={isOpen} closeModal={closeModal} />
+      {shopId ? (
+        <FabricModal shopId={shopId} isOpen={isOpen} closeModal={closeModal} />
+      ) : (
+        <ShopModal isOpen={isOpen} closeModal={closeModal} />
+      )}
     </>
   );
 };
