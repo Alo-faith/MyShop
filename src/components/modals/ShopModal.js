@@ -5,7 +5,18 @@ import Modal from "react-modal";
 import shopStore from "../../stores/shopStore";
 
 // styles
-import { CreateButtonStyled, customStyles } from "./styles";
+import { CreateButtonStyled } from "./styles";
+
+const customStyles = {
+  content: {
+    top: "30%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%,50%)",
+  },
+};
 
 const ShopModal = ({ isOpen, closeModal, oldShop }) => {
   const resetForm = { name: "", image: "" };

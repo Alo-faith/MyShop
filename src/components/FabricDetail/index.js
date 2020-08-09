@@ -16,7 +16,7 @@ const ItemDetails = () => {
   const { itemSlug } = useParams();
   const item = itemStore.items.find((item) => item.slug === itemSlug);
 
-  if (!item) return <Redirect to="/fabric" />;
+  if (!item) return <Redirect to="/fabrics" />;
 
   return (
     <>

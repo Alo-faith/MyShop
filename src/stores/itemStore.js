@@ -13,22 +13,25 @@ class ItemStore {
       this.items = response.data;
       this.loading = false;
     } catch (error) {
-      console.error("itemStore -> fetchItems -> error", error);
+      console.error("ItemStore -> fetchItems -> error", error);
     }
   };
+  getItemById = (itemId) => this.items.find((item) => item.id === itemId);
 
-  createFabric = async (newFabric) => {
+  createFabric = async (newFabric, shop) => {
     try {
       const formData = new FormData();
-      // formData.append("name,newFabic.name")
       for (const key in newFabric) formData.append(key, newFabric[key]);
       const res = await axios.post(
-        `http://localhost:8000/shops/${newFabric.shopId}/fabrics`,
+        `http://localhost:8000/shops/${shop.id}/fabrics`,
         formData
       );
-      this.items.push(res.data);
+
+      const _item = res.data;
+      this.items.push(_item);
+      shop.items.push({ id: _item.id });
     } catch (error) {
-      console.error("itemStore -> createFabric -> error", error);
+      console.error("ItemStore -> createFabric -> error", error);
     }
   };
 
@@ -45,12 +48,15 @@ class ItemStore {
     try {
       const formData = new FormData();
       for (const key in updatedItem) formData.append(key, updatedItem[key]);
+
       await axios.put(
         `http://localhost:8000/fabrics/${updatedItem.id}`,
         formData
       );
+
       const item = this.items.find((item) => item.id === updatedItem.id);
       for (const key in updatedItem) item[key] = updatedItem[key];
+      item.image = URL.createObjectURL(updatedItem.image);
     } catch (error) {
       console.error("itemStore -> updateItem -> error", error);
     }

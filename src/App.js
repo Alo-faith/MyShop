@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 
-// //  style
-import { GlobalStyle } from "./styles";
+// Loading
+import ReactLoading from "react-loading";
+
+//  style
+import { GlobalStyle, LoadingStyle } from "./styles";
 
 // Components
 import NavBar from "./components/navBar";
@@ -50,12 +53,21 @@ function App() {
     localStorage.setItem("theme", newTheme);
   };
 
+  const Loading = () => (
+    <ReactLoading type={"bars"} color={"black"} height={200} width={200} />
+  );
   return (
     <>
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-        {shopStore.loading || itemStore.loading ? <h1>loading</h1> : <Routes />}
+        {shopStore.loading || itemStore.loading ? (
+          <LoadingStyle>
+            <Loading />
+          </LoadingStyle>
+        ) : (
+          <Routes />
+        )}
       </ThemeProvider>
     </>
   );

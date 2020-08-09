@@ -1,5 +1,8 @@
 import React from "react";
 
+//  Component
+import SignupButton from "../buttons/SignupButton";
+
 // style
 import { NavStyled, Logo, NavItem } from "./styles";
 
@@ -8,33 +11,35 @@ import fabric from "../../FabricLogo.png";
 
 const NavBar = ({ toggleTheme }) => {
   return (
-    <NavStyled className="navbar navbar-expand-lg ">
-      <Logo className="navbar-brand" to="/">
-        <img src={fabric} alt="fabric" />
-      </Logo>
+    <>
+      <NavStyled className="navbar navbar-expand-lg ">
+        <Logo className="navbar-brand" to="/">
+          <img src={fabric} alt="fabric" />
+        </Logo>
+        <SignupButton />
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav ml-auto">
+            <NavItem className="nav-item" to="/shops">
+              shops
+            </NavItem>
 
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
-          <NavItem className="nav-item" to="/shops">
-            shops
-          </NavItem>
+            <NavItem className="nav-item" to="/fabrics">
+              Fabirc
+            </NavItem>
 
-          <NavItem className="nav-item" to="/fabrics">
-            Fabirc
-          </NavItem>
-
-          <select
-            className="custom-select"
-            defaultValue="1"
-            onChange={(e) => toggleTheme(e.target.value)}
-          >
-            <option value="1">Light Mode</option>
-            <option value="2">Dark Mode</option>
-            <option value="3">Grey Mode</option>
-          </select>
+            <select
+              className="custom-select"
+              defaultValue="1"
+              onChange={(e) => toggleTheme(e.target.value)}
+            >
+              <option value="1">Light Mode</option>
+              <option value="2">Dark Mode</option>
+              <option value="3">Grey Mode</option>
+            </select>
+          </div>
         </div>
-      </div>
-    </NavStyled>
+      </NavStyled>
+    </>
   );
 };
 

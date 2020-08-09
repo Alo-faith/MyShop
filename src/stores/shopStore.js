@@ -10,9 +10,10 @@ class ShopStore {
       this.shops = response.data;
       this.loading = false;
     } catch (error) {
-      console.error("itemStore -> fetchItems -> error", error);
+      console.error("ShopStore -> fetchShop -> error", error);
     }
   };
+
   createShop = async (newShop) => {
     try {
       const formData = new FormData();
@@ -33,8 +34,9 @@ class ShopStore {
       );
       const shop = this.shops.find((shop) => shop.id === updatedShop.id);
       for (const key in updatedShop) shop[key] = updatedShop[key];
+      shop.image = URL.createObjectURL(updatedShop.image);
     } catch (error) {
-      console.error("ShopStore -> updateShopp -> error", error);
+      console.error("ShopStore -> updateShop -> error", error);
     }
   };
 

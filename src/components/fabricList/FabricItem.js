@@ -10,10 +10,14 @@ import UpdateButton from "../buttons/UpdateButton";
 // style
 import { FWrapper } from "./styles";
 
+import itemStore from "../../stores/itemStore";
+
 const FabricItem = ({ item }) => {
+  //  const items = shop.items.map((item) => itemStore.getItemById(item.id));
+  // console.log(items);
   return (
     <FWrapper layout="flexbox">
-      <Link to={`/fabric/${item.slug}`}>
+      <Link to={`/fabrics/${item.slug}`}>
         <img src={item.image} alt={item.name} />
       </Link>
 

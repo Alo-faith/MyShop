@@ -7,7 +7,7 @@ import ShopModal from "../modals/ShopModal";
 // Styles
 import { AddButtonStyle } from "./styles";
 
-const AddButton = ({ shopId }) => {
+const AddButton = ({ shop }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -22,8 +22,8 @@ const AddButton = ({ shopId }) => {
           onClick={() => setIsOpen(true)}
         />
       </AddButtonStyle>
-      {shopId ? (
-        <FabricModal shopId={shopId} isOpen={isOpen} closeModal={closeModal} />
+      {shop ? (
+        <FabricModal shop={shop} isOpen={isOpen} closeModal={closeModal} />
       ) : (
         <ShopModal isOpen={isOpen} closeModal={closeModal} />
       )}

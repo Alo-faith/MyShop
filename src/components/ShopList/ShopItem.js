@@ -13,7 +13,8 @@ const ShopItem = ({ shop }) => {
   return (
     <FWrapper layout="flexbox">
       <Link to={`/shops/${shop.slug}`}>
-        <ShopImage src={shop.image} alt={shop.name} />;<p>{shop.name}</p>
+        <ShopImage src={shop.image} alt={shop.name} />
+        <p>{shop.name}</p>
       </Link>
       <UpdateButton oldShop={shop} />
       <DeleteButton shopId={shop.id} />

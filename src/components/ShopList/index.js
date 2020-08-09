@@ -20,7 +20,7 @@ const ShopList = () => {
     shop.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
   );
   const shopList = filterShop.map((shop) => (
-    <ShopItem shop={shop} key={shop.key} />
+    <ShopItem shop={shop} key={shop.id} />
   ));
   return (
     <div className="container">

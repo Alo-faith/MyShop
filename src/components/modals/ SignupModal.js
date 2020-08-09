@@ -7,6 +7,8 @@ import itemStore from "../../stores/itemStore";
 // styles
 import { CreateButtonStyled } from "./styles";
 
+import authStore from "../../stores/authStore";
+
 const customStyles = {
   content: {
     top: "30%",
@@ -18,23 +20,22 @@ const customStyles = {
   },
 };
 
-const FabricModal = ({ shop, isOpen, closeModal, oldItem }) => {
-  // if (!shopId) shopId = oldItem.shopId;
-  const resetForm = { name: "", price: 0, description: "", image: "" };
-  const [fabric, setFabric] = useState(oldItem ?? resetForm);
+const SignupModal = ({ isOpen, closeModal }) => {
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+    email: "",
+  });
 
   const handleChange = (event) => {
-    const newFabric = { ...fabric, [event.target.name]: event.target.value };
-    setFabric(newFabric);
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
-
-  const handleImage = (event) =>
-    setFabric({ ...fabric, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    itemStore[oldItem ? "updateItem" : "createFabric"](fabric, shop);
-    // setFabric(resetForm);
+    authStore.signup(user);
     closeModal();
   };
 
@@ -43,64 +44,68 @@ const FabricModal = ({ shop, isOpen, closeModal, oldItem }) => {
       isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel="Fabric Modal"
+      contentLabel="User Modal"
     >
+      <h3>Signup</h3>
       <form onSubmit={handleSubmit}>
-        <div className="form-group row">
-          <div className="col-6">
-            <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              name="name"
-              value={fabric.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="col-6">
-            <label>Price</label>
-            <input
-              type="number"
-              min="1"
-              className="form-control"
-              name="price"
-              value={fabric.price}
-              onChange={handleChange}
-              required
-            ></input>
-          </div>
-        </div>
-
         <div className="form-group">
-          <label>Description</label>
+          <label>Username</label>
           <input
+            name="username"
+            value={user.username}
             type="text"
             className="form-control"
-            name="description"
-            value={fabric.description}
             onChange={handleChange}
-            required
           />
         </div>
-
+        <div className="form-group row">
+          <div className="col-6">
+            <label>First Name</label>
+            <input
+              name="firstName"
+              value={user.firstName}
+              type="text"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-6">
+            <label>Last Name</label>
+            <input
+              name="lastName"
+              value={user.lastName}
+              type="text"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <div className="form-group">
-          <label>Image</label>
+          <label>Email</label>
           <input
-            type="file"
+            name="email"
+            value={user.email}
+            type="text"
             className="form-control"
-            name="image"
-            onChange={handleImage}
+            onChange={handleChange}
           />
         </div>
-
-        <CreateButtonStyled className="btn float-right">
-          {oldItem ? "Update" : "Create"}
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            name="password"
+            value={user.password}
+            type="text"
+            className="form-control"
+            onChange={handleChange}
+          />
+        </div>
+        <CreateButtonStyled className="btn float-right" type="submit">
+          Sign up
         </CreateButtonStyled>
       </form>
     </Modal>
   );
 };
 
-export default FabricModal;
+export default SignupModal;

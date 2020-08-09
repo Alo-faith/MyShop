@@ -21,6 +21,10 @@ const ShopDetail = () => {
 
   if (!shop) return <Redirect to="/shops" />;
 
+  const fabrics = shop.fabrics.map((fabric) =>
+    itemStore.getItemById(fabric.id)
+  );
+  console.log("kk", fabrics);
   return (
     <>
       <FWrapper>
@@ -29,8 +33,9 @@ const ShopDetail = () => {
         {/* <UpdateButton oldShop={shop} />
         <DeleteButton shopId={shop.id} /> */}
       </FWrapper>
-      <List fabrics={shop.fabrics} />
-      <AddButton shopId={shop.id} />
+
+      <List fabrics={fabrics} />
+      <AddButton shop={shop} />
     </>
   );
 };

@@ -12,11 +12,11 @@ import { ListWrapper } from "./styles";
 const List = ({ fabrics }) => {
   const [query, setQuery] = useState("");
 
-  const filterItems = fabrics.filter((item) =>
-    item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
-  );
+  // const filterItems = fabrics.filter((item) =>
+  //   item.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())
+  // );
 
-  const itemsList = filterItems.map((item) => (
+  const itemsList = fabrics.map((item) => (
     <FabricItem item={item} key={item.id} />
   ));
 

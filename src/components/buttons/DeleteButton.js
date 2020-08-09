@@ -11,8 +11,10 @@ const DeleteButton = ({ shopId, itemId }) => {
   const handleDelete = () => {
     if (itemId) {
       itemStore.deleteItem(itemId);
+      // history.push("/fabrics");
     } else {
       shopStore.deleteShop(shopId);
+      // history.push("/shops");
     }
   };
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
