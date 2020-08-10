@@ -2,6 +2,7 @@ import React from "react";
 
 //  Component
 import SignupButton from "../buttons/SignupButton";
+import SigninButton from "../buttons/SigninButton";
 
 // style
 import { NavStyled, Logo, NavItem } from "./styles";
@@ -17,6 +18,7 @@ const NavBar = ({ toggleTheme }) => {
           <img src={fabric} alt="fabric" />
         </Logo>
         <SignupButton />
+        <SigninButton />
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
             <NavItem className="nav-item" to="/shops">

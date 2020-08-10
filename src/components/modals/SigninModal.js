@@ -20,13 +20,10 @@ const customStyles = {
   },
 };
 
-const SignupModal = ({ isOpen, closeModal }) => {
+const SigninModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
     username: "",
     password: "",
-    email: "",
   });
 
   const handleChange = (event) => {
@@ -35,7 +32,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.signup(user);
+    authStore.signin(user);
     closeModal();
   };
 
@@ -58,38 +55,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group row">
-          <div className="col-6">
-            <label>First Name</label>
-            <input
-              name="firstName"
-              value={user.firstName}
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="col-6">
-            <label>Last Name</label>
-            <input
-              name="lastName"
-              value={user.lastName}
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            name="email"
-            value={user.email}
-            type="text"
-            className="form-control"
-            onChange={handleChange}
-          />
-        </div>
+
         <div className="form-group">
           <label>Password</label>
           <input
@@ -108,4 +74,4 @@ const SignupModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default SignupModal;
+export default SigninModal;
