@@ -10,7 +10,8 @@ import UpdateButton from "../buttons/UpdateButton";
 // style
 import { FWrapper } from "./styles";
 
-import itemStore from "../../stores/itemStore";
+// store
+import authStore from "../../stores/authStore";
 
 const FabricItem = ({ item }) => {
   //  const items = shop.items.map((item) => itemStore.getItemById(item.id));

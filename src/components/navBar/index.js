@@ -1,33 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+import { observer } from "mobx-react";
+import { FiLogOut } from "react-icons/fi";
 
 //  Component
 import SignupButton from "../buttons/SignupButton";
 import SigninButton from "../buttons/SigninButton";
+import Home from "../Home";
 
 // style
-import { NavStyled, Logo, NavItem } from "./styles";
+import { NavStyled, Logo, NavItem, UsernameStyled } from "./styles";
 
 //  logo
 import fabric from "../../FabricLogo.png";
 
+// store
+import authStore from "../../stores/authStore";
+// modal
+import ShopModal from "../modals/ShopModal";
+
 const NavBar = ({ toggleTheme }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
   return (
     <>
       <NavStyled className="navbar navbar-expand-lg ">
         <Logo className="navbar-brand" to="/">
           <img src={fabric} alt="fabric" />
         </Logo>
-        <SignupButton />
-        <SigninButton />
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
-            <NavItem className="nav-item" to="/shops">
-              shops
-            </NavItem>
+            {authStore.user?.role === "admin" && (
+              <>
+                <NavItem className="nav-item" to="/shops">
+                  shops
+                </NavItem>
 
-            <NavItem className="nav-item" to="/fabrics">
-              Fabirc
-            </NavItem>
+                <NavItem className="nav-item" to="/fabrics">
+                  Fabirc
+                </NavItem>
+              </>
+            )}
+            {authStore.user && !authStore.user.shopSlug && (
+              <UsernameStyled onClick={openModal}>Create Shop</UsernameStyled>
+            )}
+            <ShopModal isOpen={isOpen} closeModal={closeModal} />
 
             <select
               className="custom-select"
@@ -40,9 +58,15 @@ const NavBar = ({ toggleTheme }) => {
             </select>
           </div>
         </div>
+        {authStore.user && (
+          <>
+            <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
+            <FiLogOut onClick={authStore.signout} size="2em" color="red" />
+          </>
+        )}
       </NavStyled>
     </>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);

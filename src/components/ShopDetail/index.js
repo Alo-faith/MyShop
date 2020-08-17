@@ -14,17 +14,22 @@ import AddButton from "../buttons/AddButton";
 
 // style
 import { FWrapper, Description } from "./styles";
+import authStore from "../../stores/authStore";
 
 const ShopDetail = () => {
   const { shopSlug } = useParams();
+
+  if (!authStore.user) return <Redirect to="/signin" />;
+
   const shop = shopStore.shops.find((shop) => shop.slug === shopSlug);
 
   if (!shop) return <Redirect to="/shops" />;
+  const fabrics = shop.fabrics
+    ? shop.fabrics
+        .map((fabric) => itemStore.getItemById(fabric.id))
+        .filter((fabric) => fabric)
+    : [];
 
-  const fabrics = shop.fabrics.map((fabric) =>
-    itemStore.getItemById(fabric.id)
-  );
-  console.log("kk", fabrics);
   return (
     <>
       <FWrapper>

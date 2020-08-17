@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router-dom";
 
 // styles
 import { Title } from "../../styles";
@@ -7,6 +8,7 @@ import { ListWrapper } from "./styles";
 
 // Store
 import shopStore from "../../stores/shopStore";
+import authStore from "../../stores/authStore";
 
 // component
 import ShopItem from "./ShopItem";
@@ -15,6 +17,9 @@ import AddButton from "../buttons/AddButton";
 
 const ShopList = () => {
   const [query, setQuery] = useState("");
+
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to="/" />;
 
   const filterShop = shopStore.shops.filter((shop) =>
     shop.name.toLocaleUpperCase().includes(query.toLocaleUpperCase())

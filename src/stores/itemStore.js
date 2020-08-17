@@ -1,5 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 // slug
 import slugify from "react-slugify";
@@ -9,7 +9,7 @@ class ItemStore {
   loading = true;
   fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/fabrics");
+      const response = await instance.get("/fabrics");
       this.items = response.data;
       this.loading = false;
     } catch (error) {
@@ -22,10 +22,7 @@ class ItemStore {
     try {
       const formData = new FormData();
       for (const key in newFabric) formData.append(key, newFabric[key]);
-      const res = await axios.post(
-        `http://localhost:8000/shops/${shop.id}/fabrics`,
-        formData
-      );
+      const res = await instance.post(`/shops/${shop.id}/fabrics`, formData);
 
       const _item = res.data;
       this.items.push(_item);
@@ -37,7 +34,7 @@ class ItemStore {
 
   deleteItem = async (itemId) => {
     try {
-      await axios.delete(`http://localhost:8000/fabrics/${itemId}`);
+      await instance.delete(`/fabrics/${itemId}`);
       this.items = this.items.filter((item) => item.id !== +itemId);
     } catch (error) {
       console.error("itemStore -> deleteItem -> error", error);
@@ -49,10 +46,7 @@ class ItemStore {
       const formData = new FormData();
       for (const key in updatedItem) formData.append(key, updatedItem[key]);
 
-      await axios.put(
-        `http://localhost:8000/fabrics/${updatedItem.id}`,
-        formData
-      );
+      await instance.put(`/fabrics/${updatedItem.id}`, formData);
 
       const item = this.items.find((item) => item.id === updatedItem.id);
       for (const key in updatedItem) item[key] = updatedItem[key];

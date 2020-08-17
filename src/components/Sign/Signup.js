@@ -1,27 +1,14 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
-
-// Stores
-import itemStore from "../../stores/itemStore";
+import { Link, Redirect } from "react-router-dom";
 
 // styles
-import { CreateButtonStyled } from "./styles";
+import { CreateButtonStyled, Form } from "./styles";
 
 // store
 import authStore from "../../stores/authStore";
+import { observer } from "mobx-react";
 
-const customStyles = {
-  content: {
-    top: "30%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%,50%)",
-  },
-};
-
-const SignupModal = ({ isOpen, closeModal }) => {
+const Signup = () => {
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -32,27 +19,25 @@ const SignupModal = ({ isOpen, closeModal }) => {
   });
 
   const handleChange = (event) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    const newUser = { ...user, [event.target.name]: event.target.value };
+    setUser(newUser);
+    console.log(user);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     authStore.signup(user);
-    closeModal();
   };
+  if (authStore.user) return <Redirect to="/" />;
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="User Modal"
-    >
-      <h3>Signup</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <Form onSubmit={handleSubmit}>
+        <h3>Sign up</h3>
         <div className="form-group">
           <label>Username</label>
           <input
+            required
             name="username"
             value={user.username}
             type="text"
@@ -95,20 +80,25 @@ const SignupModal = ({ isOpen, closeModal }) => {
         <div className="form-group">
           <label>Password</label>
           <input
+            required
             name="password"
             value={user.password}
             type="password"
             className="form-control"
             onChange={handleChange}
-          />
+          />{" "}
         </div>
-
-        <CreateButtonStyled className="btn float-right" type="submit">
+        <CreateButtonStyled
+          onClick={handleSubmit}
+          className="btn float-right"
+          type="submit"
+        >
           Sign up
         </CreateButtonStyled>
-      </form>
-    </Modal>
+        <Link to="/signin">Sign in</Link>
+      </Form>
+    </div>
   );
 };
 
-export default SignupModal;
+export default observer(Signup);

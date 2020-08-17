@@ -27,3 +27,6 @@ export const Logo = styled(Link)`
     width: 140px;
   }
 `;
+export const UsernameStyled = styled.p`
+  padding: 0.25em 1em;
+`;

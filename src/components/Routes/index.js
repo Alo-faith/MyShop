@@ -8,6 +8,8 @@ import Home from "../Home";
 import ShopList from "../ShopList";
 import ShopDetail from "../ShopDetail";
 import ItemDetails from "../FabricDetail";
+import Signup from "../Sign/Signup";
+import Signin from "../Sign/Signin";
 
 // Stores
 import itemStore from "../../stores/itemStore";
@@ -16,6 +18,14 @@ const Routes = () => {
   return (
     <>
       <Switch>
+        <Route path="/signin">
+          <Signin />
+        </Route>
+
+        <Route path="/signup">
+          <Signup />
+        </Route>
+
         <Route path="/shops/:shopSlug">
           <ShopDetail />
         </Route>
