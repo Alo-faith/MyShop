@@ -1,9 +1,6 @@
 import { decorate, observable } from "mobx";
 import instance from "./instance";
 
-// slug
-import slugify from "react-slugify";
-
 class ItemStore {
   items = [];
   loading = true;
