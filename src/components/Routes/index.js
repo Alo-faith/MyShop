@@ -18,31 +18,31 @@ const Routes = () => {
   return (
     <>
       <Switch>
-        <Route path="/signin">
+        <Route exact path="/signin">
           <Signin />
         </Route>
 
-        <Route path="/signup">
+        <Route exact path="/signup">
           <Signup />
         </Route>
 
-        <Route path="/shops/:shopSlug">
+        <Route exact path="/shops/:shopSlug">
           <ShopDetail />
         </Route>
 
-        <Route path="/shops">
+        <Route exact path="/shops">
           <ShopList />
         </Route>
 
-        <Route path="/fabrics/:itemSlug">
+        <Route exact path="/fabrics/:itemSlug">
           <ItemDetails />
         </Route>
 
-        <Route path="/fabrics">
+        <Route exact path="/fabrics">
           <List fabrics={itemStore.items} />
         </Route>
 
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
       </Switch>

@@ -88,11 +88,7 @@ const Signup = () => {
             onChange={handleChange}
           />{" "}
         </div>
-        <CreateButtonStyled
-          onClick={handleSubmit}
-          className="btn float-right"
-          type="submit"
-        >
+        <CreateButtonStyled className="btn float-right" type="submit">
           Sign up
         </CreateButtonStyled>
         <Link to="/signin">Sign in</Link>
